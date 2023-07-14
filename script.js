@@ -24,7 +24,7 @@ function updateCart() {
   
     if (cart.length === 0) {
       cartItemsElement.innerHTML = '<p>Carrello vuoto</p>';
-      checkoutButton.style.display = 'none'; // Nascondi il pulsante quando il carrello è vuoto
+      checkoutButton.style.display = 'none'; 
     } else {
       var totalPrice = 0;
       for (var i = 0; i < cart.length; i++) {
@@ -40,7 +40,7 @@ function updateCart() {
       total.innerHTML = 'Totale: $' + totalPrice;
       cartItemsElement.appendChild(total);
   
-      checkoutButton.style.display = 'block'; // Mostra il pulsante quando ci sono elementi nel carrello
+      checkoutButton.style.display = 'block'; 
     }
   }
   
@@ -59,3 +59,19 @@ function toggleSection(sectionId) {
 function proceedToCheckout() {
     window.location.href = "checkout.html";
   }  
+
+var products = document.querySelectorAll('.product');
+
+products.forEach(function(product) {
+  var productImage = product.querySelector('img');
+  var productDetails = product.querySelector('.product-details');
+
+  productImage.addEventListener('mouseover', function(event) {
+
+    var mouseX = event.pageX;
+    var mouseY = event.pageY;
+
+    productDetails.style.left = mouseX + 'px';
+    productDetails.style.top = mouseY + 'px';
+  });
+});
